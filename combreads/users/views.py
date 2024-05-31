@@ -18,10 +18,10 @@ def login_view(request):
             login(request, user)
             return HttpResponseRedirect(reverse("index"))
         else:
-            return render(request,"users/login.html"), {
+            return render(request,"users/login.html", {
                 "message": "Invalid Credentials"
-            }
-
+            })
+        
     return render(request,"users/login.html")
 
 def logout_view(request):

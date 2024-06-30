@@ -2,8 +2,9 @@
 
 {% block body %}
 
-    <h1> Welcome to Combreads, {{ request.user.username }}</h1>.\myenv\Scripts\activate
+    <h1> Welcome to Combreads, {{ request.user.username }}</h1>
 
+    <a href="{% url 'blogpage' %}"> My Bread Diary</a>
     <a href="{% url 'logout' %}">Log Out</a>
 
 {% endblock %}

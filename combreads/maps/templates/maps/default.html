@@ -1,0 +1,16 @@
+{% extends "maps/layout.html" %}
+
+{% block body %}
+<h1> Find My Bread</h1>
+<div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic21zbXMiLCJhIjoiY2x5MWx1M2x3MHg4ajJscG5yZ21jbWpvZSJ9.95R49IvDqlvEkv3pJ8LnVQ';
+const map = new mapboxgl.Map({
+	container: 'map', // container ID
+	style: 'mapbox://styles/mapbox/streets-v12', // style URL
+	center: [-74.5, 40], // starting position [lng, lat]
+	zoom: 9, // starting zoom
+});
+</script>
+
+{% endblock %}

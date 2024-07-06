@@ -1,1 +1,1 @@
-web: gunicorn combreads_html.combreads.wsgi:application
+web: gunicorn combreads.wsgi --log-file -

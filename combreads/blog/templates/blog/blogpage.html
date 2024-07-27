@@ -12,5 +12,6 @@
             <a href="{% url 'post_detail' post.slug %}"> Read more </a>
         </div>
     {% endfor %}
+    <a href="{% url 'add_post' %}"> Add a post!</a>
     <a href="{% url 'index' %}"> Return to Homepage</a>
 {% endblock %}

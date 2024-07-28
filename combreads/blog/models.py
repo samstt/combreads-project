@@ -7,6 +7,7 @@ class Post(models.Model):
     slug = models.SlugField()
     intro = models.TextField()
     body = models.TextField()
+    banner = models.ImageField(default='fallback.png', blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
     class Meta:

@@ -9,31 +9,30 @@
     const map = new mapboxgl.Map({
         container: 'map', 
 		style: 'mapbox://styles/mapbox/streets-v12',
-        center: [103.8, 1.3], // starting position [lng, lat]. Note that lat must be set between -90 and 90
-        zoom: 12 // starting zoom
+        center: [103.8, 1.3], 
+        zoom: 12 
     });
-	const marker = new mapboxgl.Marker() // initialize a new marker
-  .setLngLat([103.8, 1.3]) // Marker [lng, lat] coordinates
-  .addTo(map); // Add the marker to the map
+	const marker = new mapboxgl.Marker() 
+  .setLngLat([103.8, 1.3]) 
+  .addTo(map); 
 
   const geocoder = new MapboxGeocoder({
-        // Initialize the geocoder
-        accessToken: mapboxgl.accessToken, // Set the access token
-        mapboxgl: mapboxgl, // Set the mapbox-gl instance
-        marker: false, // Do not use the default marker style
-        placeholder: 'Search for bread places in Singapore', // Placeholder text for the search bar
-        bbox: [103.6050 , 1.2055, 104.0285, 1.4784], // Boundary for Berkeley
+        
+        accessToken: mapboxgl.accessToken, 
+        mapboxgl: mapboxgl, 
+        marker: false, 
+        placeholder: 'Search for bread places in Singapore', 
+        bbox: [103.6050 , 1.2055, 104.0285, 1.4784], 
         proximity: {
           longitude: 103.8,
           latitude: 1.3
         } 
       });
 
-      // Add the geocoder to the map
+      
       map.addControl(geocoder);
 
-      // After the map style has loaded on the page,
-      // add a source layer and default styling for a single point
+      
       map.on('load', () => {
         map.addSource('single-point', {
           'type': 'geojson',
@@ -53,8 +52,7 @@
           }
         });
 
-        // Listen for the `result` event from the Geocoder // `result` event is triggered when a user makes a selection
-        //  Add a marker at the result's coordinates
+    
         geocoder.on('result', (event) => {
           map.getSource('single-point').setData(event.result.geometry);
         });

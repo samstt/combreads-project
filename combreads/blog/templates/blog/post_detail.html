@@ -2,6 +2,7 @@
 
 {% block body %}
     <h1 class="title">{{ post.title }}</h1>
+    <img src="{{ post.banner.url }}" alt="{{ post.title }}"/>
 
     <small> Posted at {{ post.date_added}}</small>
 

@@ -2,19 +2,31 @@
 {% extends "recommendations/layout.html" %}
 
 {% block body %}
-<h1> Bread of the Day</h1>
-
-<h3> Recommendation of the Day: </h3>
-{% if daily_reco %}
-<h4> Bread name:</h4>
-    <p>{{ daily_reco.name }}</p>
-<h4> Location</h4>
-    <p> {{ daily_reco.location }}</p>
-<h4> Date of recommendation</h4>
-    <p> {{ daily_reco.date }}</p>
-{% else %}
-    <p> No Recommendation Today!</p>
-{% endif %}
-
-<a href="{% url 'index' %}"> Return to Homepage</a>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="text-center text-primary mb-4">Bread of the Day</h1>
+            <h3 class="text-center text-secondary mb-4">Recommendation of the Day:</h3>
+            {% if daily_reco %}
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Bread name:</h4>
+                        <p class="card-text">{{ daily_reco.name }}</p>
+                        <h4 class="card-title">Location:</h4>
+                        <p class="card-text">{{ daily_reco.location }}</p>
+                        <h4 class="card-title">Date of recommendation:</h4>
+                        <p class="card-text">{{ daily_reco.date }}</p>
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-warning text-center">
+                    No Recommendation Today!
+                </div>
+            {% endif %}
+            <div class="text-center mt-4">
+                <a href="{% url 'index' %}" class="btn btn-outline-primary">Return to Homepage</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

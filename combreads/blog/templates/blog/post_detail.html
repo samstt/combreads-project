@@ -1,49 +1,38 @@
 {% extends "blog/layout.html" %}
 
 {% block body %}
-    <h1 class="title">{{ post.title }}</h1>
-    <img src="{{ post.banner.url }}" alt="{{ post.title }}"/>
-
-    <small> Posted at {{ post.date_added}}</small>
-
-    <p><strong>{{ post.intro }}</strong></p>
-
-    <p>{{ post.body}}</p>
+<div class="container mt-5">
+    <h1 class="text-primary mb-4">{{ post.title }}</h1>
+    <img src="{{ post.banner.url }}" alt="{{ post.title }}" class="img-fluid small-img mb-4"/>
+    <small class="text-muted">Posted at {{ post.date_added }}</small>
+    <p class="font-weight-bold mt-3">{{ post.intro }}</p>
+    <p>{{ post.body }}</p>
 
     <hr>
 
-    <h2 class="subtitle">Comments</h2>
-
+    <h2 class="text-secondary mb-4">Comments</h2>
     {% for comment in post.comments.all %}
-        <article class="media">
-            <div class="media-content">
-                <div class="content">
-                    <p>
-                        <strong>{{ comment.name }}</strong> <small>{{ comment.date_added|timesince }} ago</small>
-                        <br>
-                        {{ comment.body}}
-                    </p>
-                </div>
-            </div>
-        </article>
-{% empty %}
-     <div class="notification">
-            No comments at the moment.
-    </div>
-{% endfor%}
-
-<hr>
-    <h2 class="subtitle"> Add a Comment</h2>
-
-    <form method ="post" action=".">
-        {% csrf_token %}
-
-        {{ form.as_p }}
-
-        <div class="field">
-            <div class="control">
-                <button class="button is-success">Submit</button>
+        <div class="media mb-4">
+            <div class="media-body">
+                <h5 class="mt-0">{{ comment.name }} <small class="text-muted">{{ comment.date_added|timesince }} ago</small></h5>
+                {{ comment.body }}
             </div>
         </div>
+    {% empty %}
+        <div class="alert alert-warning" role="alert">
+            No comments at the moment.
+        </div>
+    {% endfor %}
+
+    <hr>
+
+    <h2 class="text-secondary mb-4">Add a Comment</h2>
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
     </form>
+</div>
 {% endblock %}

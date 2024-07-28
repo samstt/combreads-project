@@ -3,14 +3,19 @@
 
 {% block body %}
   
-<h2>Sign up here!</h2>
+<br>
+<div class="container" style="width:500px;">
+  <h2>Sign up here!</h2>
 
-<form method="post" action="" >  
-  {% csrf_token %}  
-  {{ form|crispy }}
-  <input type="submit" name ="Create User">
-</form>  
+  <form method="post" action="" >  
+    {% csrf_token %}  
+    {{ form|crispy }}
+    <input type="submit" name ="Create User">
+  </form>  
 
-<a href="{% url 'login' %}"> Already have an account? Login here</a>
+  <a href="{% url 'login' %}"> Already have an account? Login here</a>
+</div>
+</br>
+
 
 {% endblock %}

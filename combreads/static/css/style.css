@@ -1,0 +1,9 @@
+body {
+        background-image: url("{% static '/images/homepage.PNG' %}");
+    }
+
+ h1 {
+        text-align: center; 
+    }
+
+

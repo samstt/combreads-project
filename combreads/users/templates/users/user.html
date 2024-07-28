@@ -3,7 +3,6 @@
 {% block body %}
 
     <h1> Welcome to Combreads, {{ request.user.username }}</h1>
-
     <a href="{% url 'blogpage' %}"> My Bread Diary</a>
     <a href="{% url 'default' %}"> Find My Bread</a>
     <a href ="{% url 'suggestions' %}"> Bread of the Day</a>
